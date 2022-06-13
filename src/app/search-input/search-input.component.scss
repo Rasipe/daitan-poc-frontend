@@ -1,0 +1,24 @@
+$primary-color: #42A5F5;
+
+.search-field {
+    border: 1px solid #4F4F4F;
+    height: 30px;
+    border-radius: 5px 0px 0px 5px;
+    appearance: none;
+    outline:0;
+    box-sizing: border-box;
+
+    &:focus {
+        border-color: mix($primary-color, #ffffff, 80%);
+    }
+}
+
+.search-button {
+    border-radius: 0px 5px 5px 0px;
+    height: 30px;
+    box-sizing: border-box;
+    border: none;
+    background: $primary-color;
+    color: white;
+
+}

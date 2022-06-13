@@ -1,0 +1,12 @@
+.movie-container {
+    display: flex;
+    align-items: center;
+    height: 200px;
+    border-bottom: 2px solid #E7F0F7;
+    background: #fff;
+}
+
+.movie-image {
+    object-position: center;
+    object-fit: contain;
+}
