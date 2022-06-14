@@ -7,10 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MovieListComponent implements OnInit {
   @Input() movie: any = {};
+  @Input() score: number = 0;
+  @Input() popularity: number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getImage() {
+    return `https://image.tmdb.org/t/p/w500${this.movie.poster_path}`
   }
 
 }

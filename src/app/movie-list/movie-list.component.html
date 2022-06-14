@@ -1,7 +1,17 @@
 <div class="movie-container">
-    <img [src]="movie.poster_path" [alt]="movie.original_title" class="movie-image">
+    <img [src]="getImage()" [alt]="movie.original_title" class="movie-image">
     <div class="movie-info">
-        <h4>{{movie.title}}</h4>
+        <h3>{{movie.title}}</h3>
         <p>{{movie.overview}}</p>
+        <div class="icon-wrapper">
+            <p>
+                <i class="fa-solid fa-ranking-star score-icon"></i>
+                <span>{{score}}</span>
+            </p>
+            <p>
+                <i class="fa-solid fa-star score-icon"></i>
+                <span>{{popularity}}</span>
+            </p>
+        </div>
     </div>
 </div>

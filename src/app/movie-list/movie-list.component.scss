@@ -1,12 +1,25 @@
 .movie-container {
     display: flex;
-    align-items: center;
     height: 200px;
     border-bottom: 2px solid #E7F0F7;
     background: #fff;
+    padding: 15px;
 }
 
 .movie-image {
     object-position: center;
     object-fit: contain;
+    max-height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.score-icon {
+    color: #FFC107;
+    margin-right: 5px;
+}
+
+.icon-wrapper {
+    display: flex;
+    gap:  10px;
 }

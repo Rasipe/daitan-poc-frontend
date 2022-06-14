@@ -1,0 +1,20 @@
+<nav aria-label="pagination">
+    <ul>
+        <li>
+            <button [disabled]="current === 1"
+                (click)="onPrevious()">
+                Anterior
+            </button>
+        </li>
+        <li *ngFor="let page of pages;">
+            <a [class.current]="page === current" tabindex="0" (click)="onGoTo(page)">
+                {{ page }}</a>
+        </li>
+        <li>
+            <button [disabled]="current === total"
+                (click)="onNext()">
+                Próximo
+            </button>
+        </li>
+    </ul>
+</nav>

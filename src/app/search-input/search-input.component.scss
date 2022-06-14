@@ -1,12 +1,20 @@
 $primary-color: #42A5F5;
+$height: 40px;
+
+.search-container {
+    width: 100%;
+}
 
 .search-field {
     border: 1px solid #4F4F4F;
-    height: 30px;
+    height: $height;
     border-radius: 5px 0px 0px 5px;
     appearance: none;
     outline:0;
     box-sizing: border-box;
+    width: 95%;
+    font-size: 18px;
+    padding-left: 15px;
 
     &:focus {
         border-color: mix($primary-color, #ffffff, 80%);
@@ -14,11 +22,14 @@ $primary-color: #42A5F5;
 }
 
 .search-button {
+    width: 5%;
     border-radius: 0px 5px 5px 0px;
-    height: 30px;
+    height: $height;
     box-sizing: border-box;
-    border: none;
+    border: 1px solid $primary-color;
     background: $primary-color;
     color: white;
+    cursor: pointer;
+    box-sizing: border-box;
 
 }
