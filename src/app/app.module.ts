@@ -7,20 +7,27 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { PaginationComponent } from './pagination/pagination.component'
+import { Service } from "./services/service";
+import { IconWrapperComponent } from './movie-list/icon-wrapper/icon-wrapper.component';
+import { PaginationButtonComponent } from './pagination/pagination-button/pagination-button.component';
+import { SearchButtonComponent } from './search-input/search-button/search-button.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchInputComponent,
     MovieListComponent,
-    PaginationComponent
+    PaginationComponent,
+    IconWrapperComponent,
+    PaginationButtonComponent,
+    SearchButtonComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,15 @@
+$primary-color: #42A5F5;
+$height: 40px;
+
+.search-button {
+    width: 80px;
+    border-radius: 0px 5px 5px 0px;
+    height: $height;
+    box-sizing: border-box;
+    border: 1px solid $primary-color;
+    background: $primary-color;
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+
+}

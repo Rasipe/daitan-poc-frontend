@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
+const terms = {
+  previus: "Anterior",
+  next: "Próximo"
+}
+
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
@@ -14,6 +19,10 @@ export class PaginationComponent implements OnInit, OnChanges {
   @Output() previous: EventEmitter<number> = new EventEmitter<number>()
 
   public pages: number[] = []
+
+  get labels() {
+    return terms;
+  }
 
 
   ngOnChanges(changes: SimpleChanges): void {

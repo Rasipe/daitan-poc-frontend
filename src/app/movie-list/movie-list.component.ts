@@ -6,17 +6,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
-  @Input() movie: any = {};
-  @Input() score: number = 0;
-  @Input() popularity: number = 0;
+  @Input() movies: any[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  getImage() {
-    return `https://image.tmdb.org/t/p/w500${this.movie.poster_path}`
+  getImage(poster: string) {
+    return `https://image.tmdb.org/t/p/w500${poster}`
   }
 
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Service } from "./services/service"
+
+const terms = {
+  noData: "Nenhum resultado encontrado para a pesquisa"
+}
 
 @Component({
   selector: 'app-root',
@@ -7,14 +11,19 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  apiKey = "feb6f0eeaa0a72662967d77079850353";
   title = 'daitan-poc-frontend';
   movies: Movies[] = [];
   query: string = "";
   page: number = 1;
   totalPages: number = 1;
+  notFound: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  get labels() {
+    return terms;
+  }
+
+  constructor(private service: Service) {}
+
   ngOnInit(): void {
   }
 
@@ -26,15 +35,6 @@ export class AppComponent implements OnInit{
   onPagination(page: number) {
     this.page = page;
     this.getMovies();
-  }
-
-  getMovies() {
-    const url = `https://api.themoviedb.org/3/search/movie?&api_key=${this.apiKey}&page=1&query=${this.query}&page=${this.page}`;
-    this.http.get(url).subscribe((res: any) => {
-      this.movies = res.results
-      this.totalPages = res.total_pages
-      this.page = res.page
-    })
   }
 
   public onGoTo(page: number): void {
@@ -50,6 +50,15 @@ export class AppComponent implements OnInit{
   public onPrevious(page: number): void {
     this.page = page - 1
     this.getMovies();
+  }
+
+  private getMovies() {
+    this.service.getMovies(this.query, this.page).subscribe((res: any) => {
+      this.notFound = res.results.length == 0;
+      this.movies = res.results
+      this.totalPages = res.total_pages
+      this.page = res.page
+    })
   }
 }
 

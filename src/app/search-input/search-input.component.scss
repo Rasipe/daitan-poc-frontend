@@ -12,24 +12,11 @@ $height: 40px;
     appearance: none;
     outline:0;
     box-sizing: border-box;
-    width: 95%;
+    width: calc(100% - 80px);
     font-size: 18px;
     padding-left: 15px;
 
     &:focus {
         border-color: mix($primary-color, #ffffff, 80%);
     }
-}
-
-.search-button {
-    width: 5%;
-    border-radius: 0px 5px 5px 0px;
-    height: $height;
-    box-sizing: border-box;
-    border: 1px solid $primary-color;
-    background: $primary-color;
-    color: white;
-    cursor: pointer;
-    box-sizing: border-box;
-
 }

@@ -1,15 +1,13 @@
 <div class="app-container">
   <h1 class="title">Lista de filmes</h1>
   <app-search-input (search)="onSearch($event)"></app-search-input>
-  <div class="movie-list">
-    <app-movie-list *ngFor="let item of movies" [movie]="item" [score]="item.vote_average" [popularity]="item.popularity"></app-movie-list>
+  <app-movie-list [movies]="movies"></app-movie-list>
+  <div class="pagination">
+    <app-pagination *ngIf="movies.length > 0" [total]="totalPages" [current]="page" (goTo)="onGoTo($event)"
+      (next)="onNext($event)" (previous)="onPrevious($event)">
+    </app-pagination>
   </div>
-  <app-pagination
-    *ngIf="movies.length > 0"
-    [total]="totalPages"
-    [current]="page"
-    (goTo)="onGoTo($event)"
-    (next)="onNext($event)"
-    (previous)="onPrevious($event)">
-  </app-pagination>
+  <p *ngIf="notFound" class="no-data">
+    {{labels.noData}}
+  </p>
 </div>

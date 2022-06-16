@@ -1,17 +1,13 @@
-<div class="movie-container">
-    <img [src]="getImage()" [alt]="movie.original_title" class="movie-image">
-    <div class="movie-info">
-        <h3>{{movie.title}}</h3>
-        <p>{{movie.overview}}</p>
-        <div class="icon-wrapper">
-            <p>
-                <i class="fa-solid fa-ranking-star score-icon"></i>
-                <span>{{score}}</span>
-            </p>
-            <p>
-                <i class="fa-solid fa-star score-icon"></i>
-                <span>{{popularity}}</span>
-            </p>
+<div class="movie-list">
+    <div *ngFor="let movie of movies" class="movie-container">
+        <img [src]="getImage(movie.poster_path)" [alt]="movie.original_title" class="movie-image" onerror="this.src='assets/image-placeholder.jpg'">
+        <div class="movie-info">
+            <h3>{{movie.title}}</h3>
+            <p>{{movie.overview}}</p>
+            <div class="icon-container">
+                <app-icon-wrapper [info]="movie.vote_average"></app-icon-wrapper>
+                <app-icon-wrapper [info]="movie.popularity"></app-icon-wrapper>
+            </div>
         </div>
     </div>
 </div>
