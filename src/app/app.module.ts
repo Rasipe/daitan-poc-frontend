@@ -11,6 +11,7 @@ import { Service } from "./services/service";
 import { IconWrapperComponent } from './movie-list/icon-wrapper/icon-wrapper.component';
 import { PaginationButtonComponent } from './pagination/pagination-button/pagination-button.component';
 import { SearchButtonComponent } from './search-input/search-button/search-button.component'
+import { MovieService } from './services/MovieService';
 
 @NgModule({
   declarations: [
@@ -25,9 +26,9 @@ import { SearchButtonComponent } from './search-input/search-button/search-butto
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
-  ],
-  providers: [Service],
+    HttpClientModule,
+  ],  
+  providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,10 +1,9 @@
 <div class="app-container">
   <h1 class="title">Lista de filmes</h1>
-  <app-search-input (search)="onSearch($event)"></app-search-input>
-  <app-movie-list [movies]="movies"></app-movie-list>
+  <app-search-input></app-search-input>
+  <app-movie-list></app-movie-list>
   <div class="pagination">
-    <app-pagination *ngIf="movies.length > 0" [total]="totalPages" [current]="page" (goTo)="onGoTo($event)"
-      (next)="onNext($event)" (previous)="onPrevious($event)">
+    <app-pagination *ngIf="hasMovie">
     </app-pagination>
   </div>
   <p *ngIf="notFound" class="no-data">

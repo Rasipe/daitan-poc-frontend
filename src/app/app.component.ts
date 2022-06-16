@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Service } from "./services/service"
+import { IMovie } from './models/Movie';
+import { MovieService } from "./services/MovieService"
 
 const terms = {
   noData: "Nenhum resultado encontrado para a pesquisa"
@@ -12,19 +13,26 @@ const terms = {
 })
 export class AppComponent implements OnInit{
   title = 'daitan-poc-frontend';
-  movies: Movies[] = [];
+  movies: IMovie[] = [];
   query: string = "";
   page: number = 1;
   totalPages: number = 1;
-  notFound: boolean = false;
+  searched: boolean = false;
+  hasMovie: boolean = false;
 
   get labels() {
     return terms;
   }
 
-  constructor(private service: Service) {}
+  get notFound() {
+    return this.searched && !this.hasMovie;
+  }
+
+  constructor(private service: MovieService) {}
 
   ngOnInit(): void {
+    this.service.getMovies().subscribe(res => this.hasMovie = res.length > 0)
+    this.service.getSeached().subscribe(res => this.searched = res)
   }
 
   onSearch(query: string) {
@@ -53,28 +61,7 @@ export class AppComponent implements OnInit{
   }
 
   private getMovies() {
-    this.service.getMovies(this.query, this.page).subscribe((res: any) => {
-      this.notFound = res.results.length == 0;
-      this.movies = res.results
-      this.totalPages = res.total_pages
-      this.page = res.page
-    })
+    this.searched = true;
+    this.service.searchMovies();
   }
-}
-
-interface Movies {
-  poster_path: string;
-  adult: boolean;
-  overview: string;
-  release_date: string;
-  genre_ids: number[];
-  id: number;
-  original_title: string;
-  original_language: string;
-  title: string;
-  backdrop_path: string;
-  popularity: number;
-  vote_count: number;
-  video: boolean;
-  vote_average: number;
 }

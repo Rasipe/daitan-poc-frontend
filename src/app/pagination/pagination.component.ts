@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { MovieService } from '../services/MovieService';
 
 const terms = {
   previus: "Anterior",
@@ -11,12 +12,8 @@ const terms = {
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit, OnChanges {
-  @Input() current: number = 0
-  @Input() total: number = 0
-
-  @Output() goTo: EventEmitter<number> = new EventEmitter<number>()
-  @Output() next: EventEmitter<number> = new EventEmitter<number>()
-  @Output() previous: EventEmitter<number> = new EventEmitter<number>()
+  current: number = 1
+  total: number = 0
 
   public pages: number[] = []
 
@@ -24,6 +21,18 @@ export class PaginationComponent implements OnInit, OnChanges {
     return terms;
   }
 
+  constructor(private service: MovieService) {}
+
+  ngOnInit(): void {
+    this.service.getPage().subscribe(res => {
+      this.current = res
+      this.pages = this.getPages(this.current, this.total)
+    })
+    this.service.getTotalPages().subscribe(res => {
+      this.total = res;
+      this.pages = this.getPages(this.current, this.total)
+    })
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (
@@ -35,13 +44,13 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   public onGoTo(page: number): void {
-    this.goTo.emit(page)
+    this.service.setPage(page);
   }
   public onNext(): void {
-    this.next.emit(this.current)
+    this.service.setPage(this.current + 1);
   }
   public onPrevious(): void {
-    this.previous.next(this.current)
+    this.service.setPage(this.current - 1);
   }
 
   private getPages(current: number, total: number): number[] {
@@ -58,11 +67,6 @@ export class PaginationComponent implements OnInit, OnChanges {
     }
 
     return [1, 2, 3, 4, 5, 6, total]
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
   }
 
 }

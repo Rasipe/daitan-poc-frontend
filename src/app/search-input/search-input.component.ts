@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MovieService } from '../services/MovieService';
 
 const terms = {
   search: "Buscar"
@@ -10,21 +11,19 @@ const terms = {
   styleUrls: ['./search-input.component.scss']
 })
 export class SearchInputComponent implements OnInit {
-  @Output() search: EventEmitter<string> = new EventEmitter<string>();
-
   query: string = "";
 
   get labels() {
     return terms;
   }
 
-  constructor() { }
+  constructor(private service: MovieService) {}
 
   ngOnInit(): void {
   }
 
   onSearch() {
-    this.search.emit(this.query)
+    this.service.setQuery(this.query);
   }
 
 }

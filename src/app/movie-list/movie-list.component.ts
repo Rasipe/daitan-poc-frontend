@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IMovie } from '../models/Movie';
+import { MovieService } from '../services/MovieService';
 
 @Component({
   selector: 'app-movie-list',
@@ -6,11 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
-  @Input() movies: any[] = [];
+  movies: IMovie[] = [];
 
-  constructor() { }
+  constructor(private service: MovieService) {}
 
   ngOnInit(): void {
+    this.service.getMovies().subscribe(res => {
+      this.movies = res;
+    })
   }
 
   getImage(poster: string) {
