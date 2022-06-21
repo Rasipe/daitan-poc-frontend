@@ -22,7 +22,7 @@ export class SearchInputComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSearch() {
+  onSearch(): void {
     this.service.setQuery(this.query);
   }
 

@@ -15,7 +15,7 @@ export class SearchButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClick() {
+  onClick(): void {
     this.click.emit()
   }
 

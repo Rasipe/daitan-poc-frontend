@@ -3,20 +3,20 @@ $height: 40px;
 
 .search-container {
     width: 100%;
-}
 
-.search-field {
-    border: 1px solid #4F4F4F;
-    height: $height;
-    border-radius: 5px 0px 0px 5px;
-    appearance: none;
-    outline:0;
-    box-sizing: border-box;
-    width: calc(100% - 80px);
-    font-size: 18px;
-    padding-left: 15px;
+    &>.search-field {
+        border: 1px solid #4F4F4F;
+        height: $height;
+        border-radius: 5px 0px 0px 5px;
+        appearance: none;
+        outline: 0;
+        box-sizing: border-box;
+        width: calc(100% - 80px);
+        font-size: 18px;
+        padding-left: 15px;
 
-    &:focus {
-        border-color: mix($primary-color, #ffffff, 80%);
+        &:focus {
+            border-color: mix($primary-color, #ffffff, 80%);
+        }
     }
 }

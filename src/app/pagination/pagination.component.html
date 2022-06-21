@@ -1,8 +1,8 @@
 <nav class="pagination">
-    <ul>
+    <ul class="list">
         <app-pagination-button [disabled]="current === 1" [label]="labels.previus" (click)="onPrevious()"></app-pagination-button>
-        <li *ngFor="let page of pages;">
-            <a [class.current]="page === current" tabindex="0" (click)="onGoTo(page)">
+        <li *ngFor="let page of pages;" class="page">
+            <a [class.current]="page === current" tabindex="0" (click)="onGoTo(page)" class="pagelink">
                 {{ page }}</a>
         </li>
         <app-pagination-button [disabled]="current === total" [label]="labels.next" (click)="onNext()"></app-pagination-button>

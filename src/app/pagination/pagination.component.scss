@@ -1,49 +1,49 @@
 $blue: #42A5F5;
 
 .pagination {
-    display: flex;
-    align-items: center;
-  }
-  
-  ul {
+  display: flex;
+  align-items: center;
+
+  &>.list {
     display: flex;
     justify-content: flex-end;
     list-style: none;
     height: 25px;
     margin: 0;
     padding: 0;
+
+    &>.page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      margin: 0 4px;
+
+      &>.pagelink {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        cursor: pointer;
+        width: 38px;
+        line-height: 30px;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 14px;
+
+        &.current,
+        &:not(.more):hover {
+          background-color: $blue;
+          color: #fff;
+          font-weight: 700;
+        }
+
+        &.more:hover,
+        &.current {
+          cursor: default;
+          text-decoration: none;
+        }
+      }
+    }
   }
-  
-  li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    margin: 0 4px;
-  }
-  
-  a {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    cursor: pointer;
-    width: 38px;
-    line-height: 30px;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  a.current,
-  a:not(.more):hover {
-    background-color: $blue;
-    color: #fff;
-    font-weight: 700;
-  }
-  
-  a.more:hover,
-  a.current {
-    cursor: default;
-    text-decoration: none;
-  }
+}

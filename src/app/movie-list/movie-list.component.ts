@@ -18,7 +18,7 @@ export class MovieListComponent implements OnInit {
     })
   }
 
-  getImage(poster: string) {
+  getImage(poster: string): string {
     return `https://image.tmdb.org/t/p/w500${poster}`
   }
 

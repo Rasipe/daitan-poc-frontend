@@ -16,7 +16,7 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
-  async searchMovies() {
+  async searchMovies(): Promise<void> {
     this.seachedData.next(true);
 
     const page = await firstValueFrom(this.getPage());
@@ -41,7 +41,7 @@ export class MovieService {
     return this.pageData.asObservable();
   }
 
-  setPage(page: number) {
+  setPage(page: number): void {
     this.pageData.next(page);
     this.searchMovies();
   }
@@ -50,7 +50,7 @@ export class MovieService {
     return this.queryData.asObservable();
   }
 
-  setQuery(query: string) {
+  setQuery(query: string): void {
     this.queryData.next(query);
     this.searchMovies();
   }
