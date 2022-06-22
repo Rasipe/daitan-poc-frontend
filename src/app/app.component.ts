@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IMovie } from './models/Movie';
 import { MovieService } from "./services/MovieService"
 
@@ -11,7 +12,7 @@ const terms = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'daitan-poc-frontend';
   movies: IMovie[] = [];
   query: string = "";
@@ -28,11 +29,13 @@ export class AppComponent implements OnInit{
     return this.searched && !this.hasMovie;
   }
 
-  constructor(private service: MovieService) {}
+  constructor(
+    private service: MovieService
+  ) { }
 
   ngOnInit(): void {
     this.service.getMovies().subscribe(res => this.hasMovie = res.length > 0)
-    this.service.getSeached().subscribe(res => this.searched = res)
+    this.service.getSearched().subscribe(res => this.searched = res)
   }
 
   onSearch(query: string) {

@@ -20,6 +20,7 @@ export class SearchInputComponent implements OnInit {
   constructor(private service: MovieService) {}
 
   ngOnInit(): void {
+    this.service.getQuery().subscribe(res => this.query = res)
   }
 
   onSearch(): void {
